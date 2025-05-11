@@ -1,3 +1,3 @@
-Welcome to your new Kaioken CSR project!
+# App
 
-Visit [https://kaioken.dev](https://kaioken.dev) for more information.
+The landing page for race-forge.com
