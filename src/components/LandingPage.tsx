@@ -1,6 +1,6 @@
 import { useCallback, useSignal } from "kaioken"
 import { useForm } from "kaioken/form"
-import { FeatureGrid } from './FeatureGrid';
+import { FeatureGrid } from "./FeatureGrid"
 
 export default function LandingPage() {
   const success = useSignal(false)
@@ -34,26 +34,17 @@ export default function LandingPage() {
       console.log("form", form.getFieldState("name"))
       console.log("form", form.getFieldState("email").isValidating)
     },
-    [form],
+    [form]
   )
 
   return (
     <div className="min-h-screen bg-[#121212] text-white flex flex-col items-center px-4">
-      {/* <section className="max-w-3xl w-full text-center py-24">
-        <h1 className="text-5xl font-extrabold mb-6 text-[#9eff00] tracking-tight drop-shadow">
-          RaceForge App
-        </h1>
-        <p className="text-lg md:text-xl text-gray-300 mb-8">
-          Upload your setup sheet, track photo and get data‑driven tweaks in seconds.
-        </p>
-
-        
-      </section> */}
-
-        <FeatureGrid />
+      <FeatureGrid />
       {success.value ? (
         <div className="bg-[#1f1f1f] rounded-2xl p-8 shadow-2xl text-center max-w-md w-full">
-          <h2 className="text-2xl font-semibold text-[#9eff00] mb-4">You’re in! ✅</h2>
+          <h2 className="text-2xl font-semibold text-[#9eff00] mb-4">
+            You’re in! ✅
+          </h2>
           <p className="text-gray-300">Thanks for signing up.</p>
         </div>
       ) : (
@@ -69,7 +60,10 @@ export default function LandingPage() {
           >
             {(field) => (
               <div className="flex flex-col text-left">
-                <label htmlFor={field.name} className="mb-2 text-sm font-semibold text-gray-200">
+                <label
+                  htmlFor={field.name}
+                  className="mb-2 text-sm font-semibold text-gray-200"
+                >
                   Name
                 </label>
                 <input
@@ -99,7 +93,10 @@ export default function LandingPage() {
           >
             {(field) => (
               <div className="flex flex-col text-left">
-                <label htmlFor={field.name} className="mb-2 text-sm font-semibold text-gray-200">
+                <label
+                  htmlFor={field.name}
+                  className="mb-2 text-sm font-semibold text-gray-200"
+                >
                   Email
                 </label>
                 <input
@@ -123,9 +120,7 @@ export default function LandingPage() {
           <button
             type="submit"
             className="w-full bg-[#9eff00] text-[#141414] font-bold py-3 rounded-lg hover:brightness-110 active:scale-[0.98] transition disabled:opacity-50"
-            disabled={
-              form.getFieldState("name").errors.length > 0
-            }
+            disabled={form.getFieldState("name").errors.length > 0}
           >
             Get Early Access
           </button>
