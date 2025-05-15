@@ -1,6 +1,7 @@
 import { useCallback, useSignal } from "kaioken"
 import { useForm } from "kaioken/form"
 import { FeatureGrid } from "./FeatureGrid"
+import { BASE_URL } from '../config';
 
 export default function LandingPage() {
   const success = useSignal(false)
@@ -11,8 +12,7 @@ export default function LandingPage() {
       email: "",
     },
     onSubmit: async ({ state }) => {
-      console.log("form submitted", state.email)
-      await fetch("/api/email", {
+      await fetch(`${BASE_URL}/email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,8 +31,6 @@ export default function LandingPage() {
     (e: Event) => {
       e.preventDefault()
       form.handleSubmit()
-      console.log("form", form.getFieldState("name"))
-      console.log("form", form.getFieldState("email").isValidating)
     },
     [form]
   )
