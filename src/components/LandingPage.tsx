@@ -1,7 +1,7 @@
 import { useCallback, useSignal } from "kaioken"
 import { useForm } from "kaioken/form"
 import { FeatureGrid } from "./FeatureGrid"
-import { BASE_URL } from '../config';
+import { BASE_URL } from "../config"
 
 export default function LandingPage() {
   const success = useSignal(false)
@@ -38,6 +38,92 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#121212] text-white flex flex-col items-center px-4">
       <FeatureGrid />
+{/* 
+      <form.Subscribe
+        selector={(state) => [state.canSubmit, state.isSubmitting] as const}
+        children={([canSubmit, isSubmitting]) => {
+          console.log("render submit buttons")
+          return (
+            <>
+              <form.Field
+                name="name"
+                validators={{
+                  onChange: (value) =>
+                    !value ? "Name is required" : undefined,
+                }}
+              >
+                {(field) => (
+                  <div className="flex flex-col text-left">
+                    <label
+                      htmlFor={field.name}
+                      className="mb-2 text-sm font-semibold text-gray-200"
+                    >
+                      Name
+                    </label>
+                    <input
+                      id={field.name}
+                      name={field.name}
+                      value={field.state.value}
+                      onblur={field.handleBlur}
+                      onchange={(e) => field.handleChange(e.target.value)}
+                      className="bg-[#141414] border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-[#9eff00] focus:ring-1 focus:ring-[#9eff00] transition"
+                    />
+                    {field.state.errors.length > 0 && (
+                      <span className="text-sm text-red-400 mt-2">
+                        {field.state.errors.join(", ")}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </form.Field>
+
+              <form.Field
+                name="email"
+                validators={{
+                  onChange: (email) =>
+                    !/^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/.test(email.value) &&
+                    "Valid email required",
+                }}
+              >
+                {(field) => (
+                  <div className="flex flex-col text-left">
+                    <label
+                      htmlFor={field.name}
+                      className="mb-2 text-sm font-semibold text-gray-200"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id={field.name}
+                      name={field.name}
+                      value={field.state.value}
+                      onblur={field.handleBlur}
+                      onchange={(e) => field.handleChange(e.target.value)}
+                      className="bg-[#141414] border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-[#9eff00] focus:ring-1 focus:ring-[#9eff00] transition"
+                    />
+                    {field.state.errors.length > 0 && (
+                      <span className="text-sm text-red-400 mt-2">
+                        {field.state.errors.join(", ")}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </form.Field>
+              <button
+                className={canSubmit ? "bg-green-500" : "bg-red-500"}
+                type="submit"
+                disabled={!canSubmit}
+              >
+                {isSubmitting ? "..." : "Submit"}
+              </button>
+              <button type="reset" onclick={() => form.reset()}>
+                Reset
+              </button>
+            </>
+          )
+        }}
+      /> */}
       {success.value ? (
         <div className="bg-[#1f1f1f] rounded-2xl p-8 shadow-2xl text-center max-w-md w-full">
           <h2 className="text-2xl font-semibold text-[#9eff00] mb-4">
